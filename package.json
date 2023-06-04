@@ -6,12 +6,15 @@
   "scripts": {
     "start": "npx webpack serve --config webpack.config.dev.js",
     "build": "npx webpack --config webpack.config.prod.js",
-    "build:dev": "npx webpack --config webpack.config.dev.js"
+    "build:dev": "npx webpack --config webpack.config.dev.js",
+    "build-gh-pages": "gh-pages -d dist",
+    "deploy": "npm run build && npm run build-gh-pages"
   },
   "keywords": [],
   "author": "Eugeny",
   "license": "ISC",
   "devDependencies": {
+    "gh-pages": "^5.0.0",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.0",
