@@ -1,0 +1,34 @@
+{
+  "name": "weather-sound",
+  "version": "1.0.0",
+  "description": "15:40 start\r eta 2 - 4 hrs",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx webpack serve --config webpack.config.dev.js",
+    "build": "npx webpack --config webpack.config.prod.js",
+    "build:dev": "npx webpack --config webpack.config.dev.js"
+  },
+  "keywords": [],
+  "author": "Eugeny",
+  "license": "ISC",
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "eslint": "^8.42.0",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.1",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.24",
+    "postcss-loader": "^7.3.2",
+    "postcss-preset-env": "^8.4.2",
+    "sass": "^1.62.1",
+    "sass-loader": "^13.3.1",
+    "style-loader": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.2",
+    "webpack-dev-server": "^4.15.0",
+    "webpack-merge": "^5.9.0"
+  }
+}
