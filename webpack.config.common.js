@@ -6,12 +6,20 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "src"),
-  entry: "./index.js",
+  entry: "./index.ts",
   output: {
     filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
     assetModuleFilename: "assets/[hash][ext][query]"
+  },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
+    extensionAlias: {
+     ".js": [".js", ".ts"],
+     ".cjs": [".cjs", ".cts"],
+     ".mjs": [".mjs", ".mts"]
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,6 +41,7 @@ module.exports = {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      { test: /\.([cm]?ts|tsx)$/, loader: "ts-loader" },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",

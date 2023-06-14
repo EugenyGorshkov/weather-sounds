@@ -5,15 +5,15 @@ import "./index.scss"
 
 const mainBackgroundImage = document.querySelector(".bg-image")
 
-const sun = document.querySelector(".sun")
-const rain = document.querySelector(".rain")
-const snow = document.querySelector(".snow")
+const sun = document.querySelector(".sun") as HTMLElement
+const rain = document.querySelector(".rain") as HTMLElement
+const snow = document.querySelector(".snow") as HTMLElement
 
 const AllIcons = document.querySelectorAll(".item-icon")
 
-const sunIcon = document.querySelector(".item-icon.sun")
-const rainIcon = document.querySelector(".item-icon.rain")
-const snowIcon = document.querySelector(".item-icon.snow")
+const sunIcon = document.querySelector(".item-icon.sun") as HTMLElement
+const rainIcon = document.querySelector(".item-icon.rain") as HTMLElement
+const snowIcon = document.querySelector(".item-icon.snow") as HTMLElement
 
 const audioSun = new Audio(sunAudio)
 const audioRain = new Audio(rainAudio)
@@ -21,11 +21,9 @@ const audioSnow = new Audio(snowAudio)
 
 const AllSound = [audioSun,audioRain,audioSnow]
 
-const sliderSound = document.querySelector(".weather-slider")
+const sliderSound = document.querySelector(".weather-slider") as HTMLInputElement
 
-console.log(sliderSound.value)
-
-const playPauseAudio = (audio, icon) => {
+const playPauseAudio = (audio: HTMLAudioElement, icon: Element) => {
     if (!icon.classList.contains("active")) {
         AllSound.forEach(element => element.pause())
         AllIcons.forEach(element => element.classList.remove("active")) 
@@ -37,9 +35,11 @@ const playPauseAudio = (audio, icon) => {
     } 
 }
 
-const changeBg = (string) => {
-    mainBackgroundImage.classList.remove("sun","rain","snow")
-    mainBackgroundImage.classList.add(string)
+const changeBg = (string: string) => {
+    if (mainBackgroundImage) {
+        mainBackgroundImage.classList.remove("sun","rain","snow")
+        mainBackgroundImage.classList.add(string)
+    }
 }
 
 sun.onclick = () => {
@@ -56,5 +56,5 @@ snow.onclick = () => {
 }
 
 sliderSound.onchange = () => {
-    AllSound.forEach(element => element.volume = (sliderSound.value / 100))
+    AllSound.forEach(element => element.volume = (Number(sliderSound.value) / 100))
 }
